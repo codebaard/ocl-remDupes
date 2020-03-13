@@ -1,4 +1,7 @@
+#pragma once 
+
 #include <stdio.h>
+#include <stdlib.h>
 
 #define MAX_FILES 100
 #define MAX_FILE_SIZE 10000000
