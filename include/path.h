@@ -6,8 +6,9 @@
 //#include<string.h>
 
 char *pwd;
-char *filePath;
+char *filename;
 
 char delimiter;
 
 void setPWD(const char *argv);
+void setFile(const char *argv);
