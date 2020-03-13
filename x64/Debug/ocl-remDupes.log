@@ -1,0 +1,5 @@
+﻿  main.c
+  oFile.c
+d:\dev\ocl-remdupes\ocl-remdupes\src\ofile.c(18): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+  ocl-remDupes.vcxproj -> D:\dev\ocl-remDupes\ocl-remDupes\bin\Debug\ocl-remDupes.exe
