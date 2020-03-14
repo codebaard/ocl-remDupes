@@ -30,6 +30,9 @@
     <ClCompile Include="src\fsOps.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\oclEngine.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\oFile.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\fsOps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\oclEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

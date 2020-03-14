@@ -1,5 +1,4 @@
 #include "fsOps.h"
-#include "oFile.h"
 
 void LoadDirectoryContents(char *sDir, void (*appendFile)()) //sdir : directory - code from stofl
 {
@@ -31,7 +30,7 @@ void LoadDirectoryContents(char *sDir, void (*appendFile)()) //sdir : directory 
 			if (fdFile.dwFileAttributes &FILE_ATTRIBUTE_DIRECTORY)
 			{
 				printf("Directory: %s\n", sPath);
-				ListDirectoryContents(sPath, appendFile); //Recursion, I love it!
+				LoadDirectoryContents(sPath, appendFile); //Recursion, I love it!
 			}
 			else {
 				printf("File: %s\n", sPath);

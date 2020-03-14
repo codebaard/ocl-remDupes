@@ -22,12 +22,14 @@
     <ClCompile Include="src\commandline.c" />
     <ClCompile Include="src\fsOps.c" />
     <ClCompile Include="src\main.c" />
+    <ClCompile Include="src\oclEngine.c" />
     <ClCompile Include="src\oFile.c" />
     <ClCompile Include="src\path.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\commandline.h" />
     <ClInclude Include="include\fsOps.h" />
+    <ClInclude Include="include\oclEngine.h" />
     <ClInclude Include="include\oFile.h" />
     <ClInclude Include="include\path.h" />
   </ItemGroup>

@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-
-#include <CL/cl.h>
 
 #include "oFile.h"
 #include "path.h"
 #include "commandline.h"
 #include "fsOps.h"
+#include "oclEngine.h"
 
 int main(int argc, char *argv[]) {
 
