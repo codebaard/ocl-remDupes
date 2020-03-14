@@ -5,8 +5,11 @@
 #include <CL/cl.h>
 #include "oFile.h"
 #include "path.h"
+#include "commandline.h"
 
 int main(int argc, char *argv[]) {
+
+	parseArgs(argc, argv);
 
 	//load all jpgs into struct and create a linked list
 	setFile("IMG_0631.JPG\0"); //to be replaced by some enumeration function

@@ -1,19 +1,13 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-#include <string.h>
-
 #include "path.h"
 
 void setPWD(const char *argv) {
 
-	delimiter = 0x5C; // "\\"
+	delimiter = PATH_DELIMITER; // "\\"
 
 	size_t i = strlen(argv);
 
 	while (i>=0){
 
-		printf("%x, %c\n", argv[i], argv[i]);
 		if (argv[i] == delimiter) {
 			pwd = (char*)malloc((i+1)*sizeof(char));
 			pwd[i] = '\0';
@@ -29,3 +23,13 @@ void setFile(const char *argv) {
 	filename = (char*)malloc(strlen(argv) * sizeof(char));
 	filename = argv;
 }
+
+void enumerateFiles() {
+
+}
+
+void changePWD(const char *newWD) {
+
+}
+
+

@@ -43,3 +43,4 @@ size_t determineFileSize(FILE *f) {
 	fseek(f, 0, 2);    /* file pointer at the end of file */
 	return ftell(f);   /* take a position of file pointer un size variable */
 }
+

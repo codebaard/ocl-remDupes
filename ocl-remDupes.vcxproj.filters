@@ -24,12 +24,18 @@
     <ClCompile Include="src\path.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\commandline.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\oFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\path.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\commandline.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

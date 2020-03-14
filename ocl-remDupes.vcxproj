@@ -19,11 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\commandline.c" />
     <ClCompile Include="src\main.c" />
     <ClCompile Include="src\oFile.c" />
     <ClCompile Include="src\path.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\commandline.h" />
     <ClInclude Include="include\oFile.h" />
     <ClInclude Include="include\path.h" />
   </ItemGroup>
