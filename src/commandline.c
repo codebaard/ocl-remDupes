@@ -32,7 +32,7 @@ void parseArgs(int argc, char *argv[]) {
 	} while (i < argc);
 }
 
-void setParameters(char* flag, char* buf) {
+void setParameters(char *flag, char *buf) {
 
 	int i = 0;
 	do {

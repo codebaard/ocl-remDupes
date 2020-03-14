@@ -27,6 +27,9 @@
     <ClCompile Include="src\commandline.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\fsOps.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\oFile.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\commandline.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\fsOps.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

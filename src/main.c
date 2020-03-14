@@ -3,9 +3,11 @@
 #include <string.h>
 
 #include <CL/cl.h>
+
 #include "oFile.h"
 #include "path.h"
 #include "commandline.h"
+#include "fsOps.h"
 
 int main(int argc, char *argv[]) {
 
@@ -15,6 +17,8 @@ int main(int argc, char *argv[]) {
 
 	setParameters(APPLICATION_PATH_CLI_PARAM, pths->applicationPath);
 	setParameters(WORKING_DIRECTORY_PATH_CLI_PARAM, pths->pwd);
+
+	ListDirectoryContents(pths->pwd);
 
 	//load all jpgs into struct and create a linked list
 	//setFile("IMG_0631.JPG\0"); //to be replaced by some enumeration function
