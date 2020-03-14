@@ -4,8 +4,9 @@
 
 #include "oFile.h"
 
+void(*pAppendFile)(char*, char*) = appendFile;
 
-oFile initFile(const char *path, const char *name) {
+oFile initFile(char *path, char *name) {
 
 	FILE *f;
 	f = fopen(path, "rb");
@@ -13,14 +14,22 @@ oFile initFile(const char *path, const char *name) {
 	size_t size = determineFileSize(f);
 
 	//cast pointer to address of oFile obj and request memory
-	size_t objSize = size * sizeof(size_t) + sizeof(char)*strlen(path) + sizeof(char)*strlen(name) + sizeof(size_t);
-	oFile *newFile = (oFile*)malloc(objSize);
+	//size_t objSize = size * sizeof(size_t) + sizeof(char)*strlen(path) + sizeof(char)*strlen(name) + sizeof(size_t);
+	//oFile *newFile = (oFile*)malloc(objSize);
+	oFile *newFile = (oFile*)malloc(sizeof(oFile));
 
-	newFile->path = path;
-	newFile->filename = name;
+	newFile->path = (char*)malloc(sizeof(char)*strlen(path));
+	newFile->filename = (char*)malloc(sizeof(char)*strlen(name));
+	newFile->nextFile = (oFile*)malloc(sizeof(oFile));
+
+	//copy contents
+	strcpy(newFile->path, path);
+	strcpy(newFile->filename, name);
 	newFile->filesize = size;
+
+	//initialize the pointer to this object in the previous one
 	
-	size_t *tmpBuffer = (size_t*)malloc(size * sizeof(size_t));
+	unsigned char *tmpBuffer = (unsigned char*)malloc(size * sizeof(unsigned char));
 
 	//read the buffer
 	if (f) {
@@ -44,3 +53,14 @@ size_t determineFileSize(FILE *f) {
 	return ftell(f);   /* take a position of file pointer un size variable */
 }
 
+void appendFile(char *path, char *filename) {
+	if (start == NULL) { //first element
+		start = (oFile*)malloc(sizeof(oFile));
+		*start = initFile(path, filename);
+		ptrElement = start; //point to first element
+	}
+	else {
+		*ptrElement->nextFile = initFile(path, filename); //assign new element to "next" of previous
+		ptrElement = ptrElement->nextFile; //assign to empty pointer of new last
+	}
+}

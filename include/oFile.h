@@ -3,19 +3,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_FILES 100
-//#define MAX_FILE_SIZE 10000000
-
 typedef struct oFile {
-	const char *path;
-	const char *filename;
-	size_t *buffer;
+	char *path;
+	char *filename;
+	unsigned char *buffer;
 	size_t filesize;
+	struct oFile *nextFile;
 } oFile;
 
-oFile *files;
+oFile *start; //list of file-structs
+oFile *ptrElement; //ptr to several elements within list
 
-oFile initFile(const char *path, const char *name);
+oFile initFile(char *path, char *name);
+
+void appendFile(char *path, char *filename);
+extern void(*pAppendFile)(char*, char*);
+
+void initList();
 
 //void closeFiles(); //close all filestreams after finished operation
 

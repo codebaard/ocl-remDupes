@@ -1,10 +1,7 @@
 #include "fsOps.h"
+#include "oFile.h"
 
-void enumerateFS(char *buf[]) {
-
-}
-
-void ListDirectoryContents(char *sDir) //sdir : directory - code from stofl
+void LoadDirectoryContents(char *sDir, void (*appendFile)()) //sdir : directory - code from stofl
 {
 	WIN32_FIND_DATA fdFile;
 	HANDLE hFind = NULL;
@@ -17,7 +14,6 @@ void ListDirectoryContents(char *sDir) //sdir : directory - code from stofl
 	if ((hFind = FindFirstFile(sPath, &fdFile)) == INVALID_HANDLE_VALUE)
 	{
 		printf("Path not found: [%s]\n", sDir);
-		//return false;
 	}
 
 	do
@@ -35,17 +31,14 @@ void ListDirectoryContents(char *sDir) //sdir : directory - code from stofl
 			if (fdFile.dwFileAttributes &FILE_ATTRIBUTE_DIRECTORY)
 			{
 				printf("Directory: %s\n", sPath);
-				ListDirectoryContents(sPath); //Recursion, I love it!
+				ListDirectoryContents(sPath, appendFile); //Recursion, I love it!
 			}
 			else {
 				printf("File: %s\n", sPath);
+				appendFile(sPath, fdFile.cFileName);
 			}
 		}
 	} while (FindNextFile(hFind, &fdFile)); //Find the next file.
 
 	FindClose(hFind); //Always, Always, clean things up!
-
-	//return true;
 }
-
-//ListDirectoryContents("C:\\Windows\\");

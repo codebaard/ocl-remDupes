@@ -59,10 +59,10 @@ char* setApplicationPath(const char *argv) {
 	while (i >= 0) {
 
 		if (argv[i] == delim[0]) {
-			tmp = (char*)malloc((i + 1) * sizeof(char));
+			tmp = (char*)malloc((i) * sizeof(char));
 			tmp[i] = '\0';
 			tmp = strncpy(tmp, argv, i);
-			strcat(tmp, delim); //add the backslash for full path
+			//strcat(tmp, delim); //add the backslash for full path
 			break;
 		}
 		--i;

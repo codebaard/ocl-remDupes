@@ -5,5 +5,4 @@
 #include <stdlib.h>
 #include <Windows.h>
 
-void enumerateFS(char* buf[]); //buf = where to put the list of files
-void ListDirectoryContents(char *sDir);
+void LoadDirectoryContents(char *sDir, void (*appendFileToList)());
