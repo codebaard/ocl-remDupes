@@ -15,8 +15,8 @@ int main(int argc, char *argv[]) {
 
 	parseArgs(argc, argv);
 
-	setParameters(APPLICATION_PATH_CLI_PARAM, pths->applicationPath);
-	setParameters(WORKING_DIRECTORY_PATH_CLI_PARAM, pths->pwd);
+	setParameters(APPLICATION_PATH_CLI_PARAM, &pths->applicationPath);
+	setParameters(WORKING_DIRECTORY_PATH_CLI_PARAM, &pths->pwd);
 
 	ListDirectoryContents(pths->pwd);
 

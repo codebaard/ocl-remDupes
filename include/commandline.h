@@ -18,5 +18,5 @@ typedef struct arg {
 arg **args;	//all commandline arguments
 
 void parseArgs(int argc, char *argv[]);
-void setParameters(char* flag, char* buf);
+void setParameters(char *flag, char *buf[]);
 char* setApplicationPath(const char *argv);

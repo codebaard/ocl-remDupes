@@ -32,18 +32,18 @@ void parseArgs(int argc, char *argv[]) {
 	} while (i < argc);
 }
 
-void setParameters(char *flag, char *buf) {
+void setParameters(char *flag, char *buf[]) {
 
 	int i = 0;
 	do {
 
 		if (flag == APPLICATION_PATH_CLI_PARAM) {
-			buf = setApplicationPath(args[i]->parameter);			
+			*buf = setApplicationPath(args[i]->parameter);			
 			break;
 		}
 		else if (!strcmp(flag,args[i]->flag)) {
-			buf = (char*)malloc(sizeof(char)*strlen(args[i]->parameter));
-			buf = args[i]->parameter;
+			*buf = (char*)malloc(sizeof(char)*strlen(args[i]->parameter));
+			*buf = args[i]->parameter;
 			break;
 		}
 		i++;
