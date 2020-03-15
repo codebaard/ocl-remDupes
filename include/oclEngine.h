@@ -49,4 +49,4 @@ unsigned char *outBuf;
 
 void initEngine(); //add params later for platform switching
 
-void createOclMemBuffer(size_t ElementCount, );
+//void createOclMemBuffer(size_t ElementCount);

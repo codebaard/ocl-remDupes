@@ -34,19 +34,23 @@ void initEngine() {
 
 }
 
-void createOclMemBuffer(size_t ElementCount) {
-
-	buffer = (oclMemoryObj*)malloc(sizeof(oclMemoryObj));
-
-	buffer->input_buffer = clCreateBuffer(engine->context, 
-										CL_MEM_USE_HOST_PTR,
-										ElementCount * sizeof(unsigned char), 
-										NULL, 
-										status->ret_InputBuffer);
-	
-	buffer->output_buffer = clCreateBuffer(engine->context,
-							CL_MEM_USE_HOST_PTR,
-							ElementCount * sizeof(unsigned char),
-							NULL,
-							status->ret_OutputBuffer);
-}
+//void createOclMemBuffer(size_t ElementCount, unsigned char (*inputBuf)) {
+//
+//	//count
+//	//buffer 1+2
+//	//size 1+2
+//
+//	buffer = (oclMemoryObj*)malloc(sizeof(oclMemoryObj));
+//
+//	buffer->input_buffer = clCreateBuffer(engine->context, 
+//										CL_MEM_USE_HOST_PTR,
+//										ElementCount * sizeof(unsigned char), 
+//										NULL, 
+//										status->ret_InputBuffer);
+//	
+//	buffer->output_buffer = clCreateBuffer(engine->context,
+//							CL_MEM_USE_HOST_PTR,
+//							ElementCount * sizeof(unsigned char),
+//							NULL,
+//							status->ret_OutputBuffer);
+//}

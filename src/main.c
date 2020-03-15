@@ -17,9 +17,10 @@ int main(int argc, char *argv[]) {
 	setParameters(WORKING_DIRECTORY_PATH_CLI_PARAM, &pths->pwd);
 
 	LoadDirectoryContents(pths->pwd, appendFile);
+	prepareFileBuffer();
 
 	initEngine();
-	createOclMemBuffer(getElementCount());
+	//createOclMemBuffer(getElementCount());
 
 	printf("Press Any Key to Continue\n");
 	getchar();

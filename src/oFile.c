@@ -15,14 +15,12 @@ oFile initFile(char *path, char *name) {
 	size_t size = determineFileSize(f);
 
 	//cast pointer to address of oFile obj and request memory
-	//size_t objSize = size * sizeof(size_t) + sizeof(char)*strlen(path) + sizeof(char)*strlen(name) + sizeof(size_t);
-	//oFile *newFile = (oFile*)malloc(objSize);
 	oFile *newFile = (oFile*)malloc(sizeof(oFile));
 
 	newFile->path = (char*)malloc(sizeof(char)*strlen(path));
 	newFile->filename = (char*)malloc(sizeof(char)*strlen(name));
-	//newFile->nextFile = (oFile*)malloc(sizeof(oFile));
-	newFile->nextFile = NULL; //end of list
+	memset(newFile->hash, 0, HASH_LENGTH); //init array
+	newFile->nextFile = NULL; //new end of list
 
 	//copy contents
 	strcpy(newFile->path, path);
@@ -36,7 +34,7 @@ oFile initFile(char *path, char *name) {
 	//read the buffer
 	if (f) {
 		fseek(f, 0, SEEK_SET);
-		fread(tmpBuffer, sizeof(size_t), size, f);
+		fread(tmpBuffer, sizeof(unsigned char), size, f);
 	}
 
 	else {
@@ -51,33 +49,54 @@ oFile initFile(char *path, char *name) {
 
 size_t determineFileSize(FILE *f) {
 
-	fseek(f, 0, 2);    /* file pointer at the end of file */
+	fseek(f, 0, SEEK_END);    /* file pointer at the end of file */
 	return ftell(f);   /* take a position of file pointer un size variable */
 }
 
 void appendFile(char *path, char *filename) {
 	if (start == NULL) { //first element
 		start = (oFile*)malloc(sizeof(oFile));
+		FileBuffer = (filebuffer*)malloc(sizeof(filebuffer));
 		*start = initFile(path, filename);
 		ptrElement = start; //point to first element
+		FileBuffer->elementCount = 1;
 	}
 	else {
 		ptrElement->nextFile = (oFile*)malloc(sizeof(oFile));
 		*ptrElement->nextFile = initFile(path, filename); //assign new element to "next" of previous
 		ptrElement = ptrElement->nextFile; //assign to empty pointer of new last
+		FileBuffer->elementCount++;
 	}
 }
 
-size_t getElementCount() {
-	
-	size_t counter = 0;
-	oFile *iterator = (oFile*)malloc(sizeof(oFile)); 
+void prepareFileBuffer() {
+
+	//set up iterator
+	oFile *iterator = (oFile*)malloc(sizeof(oFile));
 	iterator = start;
 
+	//set up filebuffer struct
+	FileBuffer->imageBuf = (unsigned char**)malloc(sizeof(unsigned char)*FileBuffer->elementCount*ADRESS_SPACE_MAPPING);
+	FileBuffer->hashBuf = (unsigned char**)malloc(sizeof(unsigned char)*FileBuffer->elementCount*ADRESS_SPACE_MAPPING);
+	FileBuffer->FileBufferSize = 0;
+	FileBuffer->HashBufferSize = 0;
+
+	//iterate over list to fill openCL Host Buffer with addresses from LL
 	while (iterator != NULL) {
-		counter++;
+		FileBuffer->imageBuf = &iterator->buffer;
+		*FileBuffer->hashBuf = iterator->hash;
+		FileBuffer->FileBufferSize += iterator->filesize * sizeof(unsigned char);
+		FileBuffer->HashBufferSize += sizeof(unsigned char)*HASH_LENGTH;
+
+		//printf("hashbuf %zd\n", sizeof(FileBuffer->hashBuf));
+		//printf("hashbuf string %zd\n", sizeof(iterator->hash));
+		//printf("size all elements%zd\n", sizeof(unsigned char)*FileBuffer->elementCount);
+		//printf("size uc %zd\n", sizeof(unsigned char));
+
+		//next item
+		FileBuffer->imageBuf++;
+		FileBuffer->hashBuf++;
 		iterator = iterator->nextFile;
 	}
 
-	return counter;
 }
