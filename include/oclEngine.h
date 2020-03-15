@@ -31,10 +31,12 @@ typedef struct oclKernelObj {
 typedef struct oclStatus {
 	cl_int ret_device_platform;
 	cl_int ret_device_id;
+	cl_int ret_context;
+	cl_int ret_command_cue;
 } oclStatus ;
 
 oclEngine *engine;
 oclInfo *info;
 oclStatus *status;
 
-void initEngine() //add params later for platform switching
+void initEngine(); //add params later for platform switching

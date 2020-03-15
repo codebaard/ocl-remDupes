@@ -16,7 +16,9 @@ int main(int argc, char *argv[]) {
 	setParameters(APPLICATION_PATH_CLI_PARAM, &pths->applicationPath);
 	setParameters(WORKING_DIRECTORY_PATH_CLI_PARAM, &pths->pwd);
 
-	LoadDirectoryContents(pths->pwd, appendFile);
+	//LoadDirectoryContents(pths->pwd, appendFile);
+
+	initEngine();
 
 	printf("Press Any Key to Continue\n");
 	getchar();

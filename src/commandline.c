@@ -24,8 +24,10 @@ void parseArgs(int argc, char *argv[]) {
 
 		args[j]->parameter = argv[i];
 
-		puts(args[j]->flag);
-		puts(args[j]->parameter);
+		//debug
+		//puts(args[j]->flag);
+		//puts(args[j]->parameter);
+
 		i += 2;
 		j++;
 
