@@ -5,6 +5,7 @@
 #include "oFile.h"
 
 void(*pAppendFile)(char*, char*) = appendFile;
+//size_t(*pGetElementCount)() = getElementCount;
 
 oFile initFile(char *path, char *name) {
 
@@ -20,7 +21,8 @@ oFile initFile(char *path, char *name) {
 
 	newFile->path = (char*)malloc(sizeof(char)*strlen(path));
 	newFile->filename = (char*)malloc(sizeof(char)*strlen(name));
-	newFile->nextFile = (oFile*)malloc(sizeof(oFile));
+	//newFile->nextFile = (oFile*)malloc(sizeof(oFile));
+	newFile->nextFile = NULL; //end of list
 
 	//copy contents
 	strcpy(newFile->path, path);
@@ -60,7 +62,22 @@ void appendFile(char *path, char *filename) {
 		ptrElement = start; //point to first element
 	}
 	else {
+		ptrElement->nextFile = (oFile*)malloc(sizeof(oFile));
 		*ptrElement->nextFile = initFile(path, filename); //assign new element to "next" of previous
 		ptrElement = ptrElement->nextFile; //assign to empty pointer of new last
 	}
+}
+
+size_t getElementCount() {
+	
+	size_t counter = 0;
+	oFile *iterator = (oFile*)malloc(sizeof(oFile)); 
+	iterator = start;
+
+	while (iterator != NULL) {
+		counter++;
+		iterator = iterator->nextFile;
+	}
+
+	return counter;
 }

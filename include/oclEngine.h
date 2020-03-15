@@ -33,10 +33,20 @@ typedef struct oclStatus {
 	cl_int ret_device_id;
 	cl_int ret_context;
 	cl_int ret_command_cue;
+
+	cl_int ret_InputBuffer;
+	cl_int ret_OutputBuffer;
 } oclStatus ;
 
 oclEngine *engine;
 oclInfo *info;
 oclStatus *status;
 
+oclMemoryObj *buffer;
+
+unsigned char *inBuf;
+unsigned char *outBuf;
+
 void initEngine(); //add params later for platform switching
+
+void createOclMemBuffer(size_t ElementCount, );

@@ -15,7 +15,7 @@ void initEngine() {
 	printf("Intializing openCL : PlatformIDs : %d\n", info->num_platforms);
 
 	status->ret_device_id = clGetDeviceIDs(engine->platform_id, 
-							CL_DEVICE_TYPE_ALL,
+							CL_DEVICE_TYPE_DEFAULT,
 							1, 
 							&engine->device_id, 
 							&info->num_devices);
@@ -32,4 +32,21 @@ void initEngine() {
 												status->ret_context,
 												status->ret_command_cue);
 
+}
+
+void createOclMemBuffer(size_t ElementCount) {
+
+	buffer = (oclMemoryObj*)malloc(sizeof(oclMemoryObj));
+
+	buffer->input_buffer = clCreateBuffer(engine->context, 
+										CL_MEM_USE_HOST_PTR,
+										ElementCount * sizeof(unsigned char), 
+										NULL, 
+										status->ret_InputBuffer);
+	
+	buffer->output_buffer = clCreateBuffer(engine->context,
+							CL_MEM_USE_HOST_PTR,
+							ElementCount * sizeof(unsigned char),
+							NULL,
+							status->ret_OutputBuffer);
 }
