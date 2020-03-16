@@ -88,11 +88,6 @@ void prepareFileBuffer() {
 		FileBuffer->FileBufferSize += iterator->filesize * sizeof(unsigned char);
 		FileBuffer->HashBufferSize += sizeof(unsigned char)*HASH_LENGTH;
 
-		//printf("hashbuf %zd\n", sizeof(FileBuffer->hashBuf));
-		//printf("hashbuf string %zd\n", sizeof(iterator->hash));
-		//printf("size all elements%zd\n", sizeof(unsigned char)*FileBuffer->elementCount);
-		//printf("size uc %zd\n", sizeof(unsigned char));
-
 		//next item
 		FileBuffer->imageBuf++;
 		FileBuffer->hashBuf++;

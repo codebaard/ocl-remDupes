@@ -19,6 +19,7 @@
 #elif defined(ENV32BIT)
 	#define ADRESS_SPACE_MAPPING 4
 #endif
+
 typedef struct oFile {
 	char *path;
 	char *filename;
