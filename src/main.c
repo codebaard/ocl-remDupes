@@ -21,10 +21,10 @@ int main(int argc, char *argv[]) {
 
 	initEngine();
 	createOclMemBuffer(FileBuffer->elementCount, 
-						FileBuffer->HashBufferSize, 
-						FileBuffer->FileBufferSize,
-						FileBuffer->hashBuf,
-						FileBuffer->imageBuf);
+						FileBuffer->FileBufferSize, 
+						FileBuffer->HashBufferSize,
+						FileBuffer->imageBuf,
+						FileBuffer->hashBuf);
 
 	printf("Press Any Key to Continue\n");
 	getchar();

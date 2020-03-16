@@ -46,11 +46,11 @@ void createOclMemBuffer(size_t ElementCount, size_t InputLen, size_t OutputLen, 
 										CL_MEM_USE_HOST_PTR,
 										InputLen, 
 										InputBuffer, 
-										status->ret_InputBuffer);
+										&status->ret_InputBuffer);
 	
 	buffer->output_buffer = clCreateBuffer(engine->context,
 							CL_MEM_USE_HOST_PTR,
 							OutputLen,
 							OutputBuffer,
-							status->ret_OutputBuffer);
+							&status->ret_OutputBuffer);
 }

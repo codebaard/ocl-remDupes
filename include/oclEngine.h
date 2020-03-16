@@ -15,8 +15,14 @@ typedef struct oclEngine {
 typedef struct oclInfo {
 	cl_uint num_devices;
 	cl_uint num_platforms;
-
 } oclInfo;
+
+typedef struct oclContextInfo {
+	cl_uint num_devices;
+	cl_device_id *context_devices; //array
+	cl_context_properties *context_properties; //array
+
+} oclContextInfo;
 
 typedef struct oclMemoryObj {
 	cl_mem input_buffer;
@@ -48,6 +54,8 @@ unsigned char *inBuf;
 unsigned char *outBuf;
 
 void initEngine(); //add params later for platform switching
+
+void getContextInfo();
 
 void createOclMemBuffer(size_t ElementCount, 
 						size_t InputLen, 

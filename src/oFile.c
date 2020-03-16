@@ -94,4 +94,6 @@ void prepareFileBuffer() {
 		iterator = iterator->nextFile;
 	}
 
+	puts(FileBuffer->imageBuf);
+
 }
