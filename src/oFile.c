@@ -92,7 +92,7 @@ void prepareFileBuffer() {
 		FileBuffer->FileBufferSize += iterator->filesize * sizeof(unsigned char);
 		FileBuffer->HashBufferSize += sizeof(unsigned char)*HASH_LENGTH;
 
-		fprintf(f, "%d\n", FileBuffer->HashBufferSize);
+		fprintf(f, "%s, %d\n", iterator->filename, iterator->filesize);
 
 		//next item
 		FileBuffer->imageBuf++;
@@ -101,5 +101,8 @@ void prepareFileBuffer() {
 	}
 
 	puts(FileBuffer->imageBuf);
+
+	//DEBUG -> Close WriteFile
+	fclose(f);
 
 }
