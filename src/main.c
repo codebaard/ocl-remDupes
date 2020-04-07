@@ -19,12 +19,12 @@ int main(int argc, char *argv[]) {
 	LoadDirectoryContents(pths->pwd, appendFile);
 	prepareFileBuffer();
 
-	initEngine();
-	createOclMemBuffer(FileBuffer->elementCount, 
-						FileBuffer->FileBufferSize, 
-						FileBuffer->HashBufferSize,
-						FileBuffer->imageBuf,
-						FileBuffer->hashBuf);
+	//initEngine();
+	//createOclMemBuffer(FileBuffer->elementCount, 
+	//					FileBuffer->FileBufferSize, 
+	//					FileBuffer->HashBufferSize,
+	//					FileBuffer->imageBuf,
+	//					FileBuffer->hashBuf);
 
 	printf("Press Any Key to Continue\n");
 	getchar();

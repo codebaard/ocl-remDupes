@@ -75,6 +75,10 @@ void prepareFileBuffer() {
 	oFile *iterator = (oFile*)malloc(sizeof(oFile));
 	iterator = start;
 
+	//DEBUG -> Setup WriteFile to get size
+	FILE *f;
+	f = fopen("result.txt", "w");
+
 	//set up filebuffer struct
 	FileBuffer->imageBuf = (unsigned char**)malloc(sizeof(unsigned char)*FileBuffer->elementCount*ADRESS_SPACE_MAPPING);
 	FileBuffer->hashBuf = (unsigned char**)malloc(sizeof(unsigned char)*FileBuffer->elementCount*ADRESS_SPACE_MAPPING);
@@ -87,6 +91,8 @@ void prepareFileBuffer() {
 		*FileBuffer->hashBuf = iterator->hash;
 		FileBuffer->FileBufferSize += iterator->filesize * sizeof(unsigned char);
 		FileBuffer->HashBufferSize += sizeof(unsigned char)*HASH_LENGTH;
+
+		fprintf(f, "%d\n", FileBuffer->HashBufferSize);
 
 		//next item
 		FileBuffer->imageBuf++;

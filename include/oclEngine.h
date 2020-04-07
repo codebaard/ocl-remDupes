@@ -21,7 +21,6 @@ typedef struct oclContextInfo {
 	cl_uint num_devices;
 	cl_device_id *context_devices; //array
 	cl_context_properties *context_properties; //array
-
 } oclContextInfo;
 
 typedef struct oclMemoryObj {

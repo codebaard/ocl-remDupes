@@ -34,6 +34,10 @@ void initEngine() {
 
 }
 
+void getContextInfo() {
+
+}
+
 void createOclMemBuffer(size_t ElementCount, size_t InputLen, size_t OutputLen, unsigned char **InputBuffer, unsigned char **OutputBuffer) {
 
 	//count
