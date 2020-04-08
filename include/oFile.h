@@ -5,6 +5,12 @@
 
 #define HASH_LENGTH 33 //MD5 + '\0'
 
+
+//MD5 specific code -> Put this somewhere else.
+#define MODULO_MAX 55
+#define MODULO_OPERATOR 64
+
+
 // Check address space
 #if _WIN32 || _WIN64
 	#if _WIN64

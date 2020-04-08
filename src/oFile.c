@@ -49,8 +49,22 @@ oFile initFile(char *path, char *name) {
 
 size_t determineFileSize(FILE *f) {
 
+	//this function takes the right size which is needed for padding and appending in the MD5 algorithm
+	// TODO: Put this somewhere else. Application specific code has no business here!
+
+	size_t size = 0;
+	size_t mod = 0;
+
 	fseek(f, 0, SEEK_END);    /* file pointer at the end of file */
-	return ftell(f);   /* take a position of file pointer un size variable */
+	size = ftell(f);   /* take a position of file pointer un size variable */
+
+	mod = size % MODULO_OPERATOR;
+
+	if (mod > MODULO_MAX) { //too big
+		size += (MODULO_OPERATOR - mod) + MODULO_MAX;
+	}
+
+	return size;   /* take a position of file pointer un size variable */
 }
 
 void appendFile(char *path, char *filename) {
@@ -67,6 +81,17 @@ void appendFile(char *path, char *filename) {
 		ptrElement = ptrElement->nextFile; //assign to empty pointer of new last
 		FileBuffer->elementCount++;
 	}
+
+	/*
+	Add here:
+	Rank: calc chiffre block size: (size + MD5Padding) % MD5BlockSize != || == 0
+	Store Rank in Struct and assign to rank group
+
+	Rank Group is 2D Linked list with all rank groups organized according to size
+	Different Rank Groups can be organized and passed to ocl kernel within aligned memory block size
+	
+	*/
+
 }
 
 void prepareFileBuffer() {
